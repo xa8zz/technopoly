@@ -5,3 +5,5 @@ create a company and compete against ai competitors in different markets, create
 win by having a monopoly (your company has >=70% of the market cap of the stock market) or you're the only company left (you acquired everyone else)
 
 run main.py after installing requirements
+
+will make a better readme at some pt lol
