@@ -28,17 +28,46 @@ def random_company_name(prefixes, suffixes, used_names):
             used_names.add(name)
             return name
 
+_product_fallback_counter = 1
+
+
 def random_product_name(used_names):
-    # for convenience, returns random nonsense name
-    # can be replaced with your logic
-    prefix_samples = ["Sky","Neo","Prime","Nova","Aero","Delta","Zeta","Omega","Quantum","Hyper",
-                      "Green","Cyber","Mono","Alpha","Aqua"]
-    suffix_samples = ["Flow","Boost","Hub","Core","Link","Edge","Sphere","Guard","Gate","Layer",
-                      "Matrix","Flash","Pulse","Logic","Sense"]
+    """
+    Generate a pseudo-random product name that is unique within ``used_names``.
+
+    The original implementation only combined items from ``prefix_samples`` and
+    ``suffix_samples``. Once every combination had been used the function would
+    loop forever, consuming CPU and freezing the UI.  This situation can happen
+    after 20-30 turns as the AI keeps launching new products.  To avoid that we
+    keep the original behaviour for as long as unused combinations exist but we
+    fall back to a deterministic, incrementing name when they are exhausted.
+    """
+
+    global _product_fallback_counter
+
+    prefix_samples = [
+        "Sky", "Neo", "Prime", "Nova", "Aero", "Delta", "Zeta", "Omega",
+        "Quantum", "Hyper", "Green", "Cyber", "Mono", "Alpha", "Aqua",
+    ]
+    suffix_samples = [
+        "Flow", "Boost", "Hub", "Core", "Link", "Edge", "Sphere",
+        "Guard", "Gate", "Layer", "Matrix", "Flash", "Pulse", "Logic",
+        "Sense",
+    ]
+
+    max_unique_combinations = len(prefix_samples) * len(suffix_samples)
+    max_attempts = max_unique_combinations * 5  # allow extra attempts for randomness
+
+    for _ in range(max_attempts):
+        candidate = random.choice(prefix_samples) + random.choice(suffix_samples)
+        if candidate not in used_names:
+            used_names.add(candidate)
+            return candidate
+
+    # Fall back to an incrementing name once the curated pool is exhausted.
     while True:
-        pr = random.choice(prefix_samples)
-        sf = random.choice(suffix_samples)
-        n = pr+sf
-        if n not in used_names:
-            used_names.add(n)
-            return n
+        candidate = f"Product{_product_fallback_counter}"
+        _product_fallback_counter += 1
+        if candidate not in used_names:
+            used_names.add(candidate)
+            return candidate
