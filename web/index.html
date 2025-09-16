@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technopoly · Retro Web Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="crt-overlay"></div>
+    <header class="header">
+      <div class="title">Technopoly</div>
+      <div class="subtitle">Retro Web Edition</div>
+      <div class="timeline" id="timeline">Year 1984 · Quarter 1</div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel status-panel">
+        <h2>Status Console</h2>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="label">Cash</span>
+            <span class="value" id="cash">$0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Revenue (Qtr)</span>
+            <span class="value" id="revenue">$0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Expenses (Qtr)</span>
+            <span class="value" id="expenses">$0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Valuation</span>
+            <span class="value" id="valuation">$0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Morale</span>
+            <span class="value" id="morale">0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Innovation</span>
+            <span class="value" id="innovation">0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Reputation</span>
+            <span class="value" id="reputation">0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Debt</span>
+            <span class="value" id="debt">$0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Actions Remaining</span>
+            <span class="value" id="actions-remaining">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel portfolio-panel">
+        <h2>Product Line</h2>
+        <div id="product-list" class="product-list empty">No products launched yet.</div>
+      </section>
+
+      <section class="panel markets-panel">
+        <h2>Market Scanner</h2>
+        <div class="markets-grid" id="markets"></div>
+      </section>
+
+      <section class="panel actions-panel">
+        <h2>Command Console</h2>
+        <div class="action-buttons">
+          <button data-action="launch">Launch Neon Product</button>
+          <button data-action="marketing">Run Marketing Blitz</button>
+          <button data-action="hire">Hire Elite Talent</button>
+          <button data-action="rnd">R&amp;D Hyper Sprint</button>
+          <button data-action="loan">Secure Retro Loan</button>
+          <button data-action="repay">Service Debt</button>
+          <button data-action="advance" class="advance">Advance Quarter</button>
+        </div>
+        <div class="action-description" id="action-description">
+          Choose an action to guide Technopoly through the neon-lit markets of the future.
+        </div>
+      </section>
+
+      <section class="panel log-panel">
+        <h2>Newswire Feed</h2>
+        <div class="log" id="log"></div>
+      </section>
+
+      <section class="panel ai-panel">
+        <h2>Rival Corporations</h2>
+        <div id="ai-companies" class="ai-list"></div>
+      </section>
+
+      <section class="panel chart-panel">
+        <h2>Valuation Telemetry</h2>
+        <canvas id="valuation-chart" width="520" height="220" aria-label="Valuation history chart"></canvas>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Built for local play. Pop open this page in your browser and keep Technopoly thriving in the retro silicon frontier.
+      </p>
+    </footer>
+
+    <div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <h3 id="modal-title"></h3>
+        <div id="modal-body"></div>
+        <div class="modal-actions">
+          <button id="modal-confirm" class="confirm">Confirm</button>
+          <button id="modal-cancel" class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
