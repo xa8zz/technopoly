@@ -1,5 +1,7 @@
 # technopoly
 
+**the web version is some boilterplate horrible ux thing that i was using to limit test the new gpt-5 codex model, it's not any actual implementation. in actual use just proceed with the python tkinkter version.**
+
 a competitive tech business simulation game with ai competitors, advanced market engines, and customtkinter gui
 
 i'm aware the ui is ugly lol, it's tkinter i don't think there's much to expect
